@@ -31,7 +31,7 @@ footer {
   width: 100%;
   height: 100%;
   background-color: var(--dark-brown);
-  padding: 1rem 2rem;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -131,7 +131,7 @@ header {
   max-height: 200px;
   height: 100%;
   background-color: var(--dark-brown);
-  padding: 1rem 2rem;
+  padding: 3rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,6 +174,11 @@ a[href="/classes/classes.html"] {
 nav ul li:last-child {
   border-right: none;
 }
+
+nav ul li:nth-child(5) a {
+  border-right: none;
+}
+
 nav ul li:last-child img {
   width: 24px;
   height: 24px;
