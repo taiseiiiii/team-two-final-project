@@ -1,12 +1,12 @@
 const getCurrentPath = () => {
-  const path = window.location.pathname.split("/")[1];
+  const path = window.location.pathname.split("/")[2];
   if (path === "my-work") return "my-work";
   if (path === "services") return "services";
   if (path === "classes") return "classes";
   if (path === "beauty-tips") return "beauty tips";
   if (path === "about") return "about";
   if (path === "contact") return "contact";
-  return "index.html";
+  return "team-two-final-project";
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
   navLinks.forEach((link) => {
-    if (link.href.split("/")[3] === getCurrentPath()) {
+    if (link.href.split("/")[4] === getCurrentPath()) {
       link.style.textDecoration = "underline";
       link.style.textDecorationColor = "var(--bold-main-color)";
       link.style.textDecorationThickness = "0.5px";
