@@ -1,12 +1,16 @@
 const getCurrentPath = () => {
-  const path = window.location.pathname.split("/")[2];
-  if (path === "my-work") return "my-work";
-  if (path === "services") return "services";
-  if (path === "classes") return "classes";
-  if (path === "beauty-tips") return "beauty tips";
-  if (path === "about") return "about";
-  if (path === "contact") return "contact";
-  return "team-two-final-project";
+  const pathParts = window.location.pathname.split("/").filter((p) => p);
+  // ["team-two-final-project", "my-work", "my-work.html"]
+
+  if (
+    pathParts.length === 1 ||
+    pathParts[pathParts.length - 1] === "team-two-final-project"
+  ) {
+    return "team-two-final-project";
+  }
+
+  const folder = pathParts[1]; // my-work, services, etc.
+  return folder;
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -32,8 +36,21 @@ window.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     });
   });
+
+  const currentPath = getCurrentPath();
+
   navLinks.forEach((link) => {
-    if (link.href.split("/")[4] === getCurrentPath()) {
+    const linkParts = link.href.split("/").filter((p) => p);
+    const linkFolder =
+      linkParts.length > 1
+        ? linkParts[linkParts.length - 2]
+        : "team-two-final-project";
+
+    if (
+      linkFolder === currentPath ||
+      (currentPath === "team-two-final-project" &&
+        link.href.endsWith("/team-two-final-project/"))
+    ) {
       link.style.textDecoration = "underline";
       link.style.textDecorationColor = "var(--bold-main-color)";
       link.style.textDecorationThickness = "0.5px";
